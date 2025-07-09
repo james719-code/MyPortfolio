@@ -18,6 +18,7 @@
   --h2-font: 2.9rem;
   --p-font: 1rem;
 }
+/* Preloader styles remain unchanged */
 #preloader {
   position: fixed;
   top: 0;
@@ -49,8 +50,8 @@
   57%,
   100% {
     text-shadow: 0 0 4px var(--main-color), 0 0 11px var(--main-color),
-      0 0 19px var(--main-color), 0 0 40px #0fa, 0 0 80px #0fa, 0 0 90px #0fa,
-      0 0 100px #0fa, 0 0 150px #0fa;
+    0 0 19px var(--main-color), 0 0 40px #0fa, 0 0 80px #0fa, 0 0 90px #0fa,
+    0 0 100px #0fa, 0 0 150px #0fa;
   }
   20%,
   24%,
@@ -90,6 +91,8 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* General body and header styles remain unchanged */
 body {
   color: var(--text-color);
   background: var(--bg-color);
@@ -171,6 +174,8 @@ span {
 section {
   padding: 110px 16% 90px;
 }
+
+/* Hero and About sections remain unchanged */
 .hero {
   height: 100vh;
   width: 100%;
@@ -307,6 +312,7 @@ section {
 .center-text h2 {
   font-size: var(--h2-font);
 }
+
 .services-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
@@ -368,14 +374,20 @@ section {
   border: 1px solid var(--main-color);
   transform: translateY(-5px) scale(1.03);
 }
+
+/* Portfolio Section Styles */
 .portfolio {
   background: var(--second-bg-color);
 }
+.portfolio-alt {
+  background: var(--bg-color);
+}
 .portfolio-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, auto));
   gap: 2.3rem;
   margin-top: 4.2rem;
+  align-items: start; /* Align cards to the top */
 }
 
 .row {
@@ -389,7 +401,7 @@ section {
   display: flex;
   flex-direction: column;
 }
-/* ===== NEW: Card Header for layered images ===== */
+
 .card-header {
   position: relative;
   width: 100%;
@@ -400,8 +412,13 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(2px) brightness(0.7); /* Blur and darken the background */
-  transform: scale(1.05); /* Slightly zoom to hide blur edges */
+  filter: blur(2px) brightness(0.7);
+  transform: scale(1.05);
+}
+/* ===== NEW: Modifier to remove blur ===== */
+.card-bg-img.no-blur {
+  filter: brightness(0.7);
+  transform: scale(1);
 }
 .card-logo-img {
   position: absolute;
@@ -427,19 +444,71 @@ section {
   font-weight: 700;
   margin-bottom: 10px;
 }
-.row p {
+/* General project description */
+.row-content > p {
   font-size: 15px;
   color: var(--other-color);
   line-height: 1.6;
-  margin-bottom: auto;
+  margin-bottom: 15px;
+}
+.card-attribution {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--other-color);
+  opacity: 0.8;
+  margin-bottom: 15px;
+  margin-top: -5px;
+}
+
+/* ===== NEW/UPDATED: Version Container & Item Styles ===== */
+.versions-container {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #444c5a;
+}
+.versions-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.version-item {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #444c5a;
+}
+.version-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.version-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--other-color);
+  margin-bottom: 8px;
+}
+.version-header svg {
+  color: var(--main-color);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.version-header strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+.version-description {
+  font-size: 14px;
+  color: var(--other-color);
+  opacity: 0.9;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 .tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #444c5a;
+  gap: 8px; /* Slightly smaller gap for tags */
 }
 .tools span {
   background-color: var(--bg-color);
@@ -455,8 +524,33 @@ section {
   transform: translateY(-5px) scale(1.02);
   cursor: default;
 }
+.collaborators {
+  margin-bottom: 15px;
+}
+.collaborators h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+.collaborators ul {
+  list-style: none;
+  padding-left: 0;
+}
+.collaborators li {
+  font-size: 14px;
+  color: var(--other-color);
+  margin-bottom: 5px;
+}
+.collaborators a {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+.collaborators a:hover {
+  text-decoration: underline;
+}
 
-/* ===== NEW AND MODIFIED STYLES FOR CARD ACTIONS ===== */
 .card-actions {
   position: absolute;
   top: 20px;
@@ -480,7 +574,7 @@ section {
   background: rgba(7, 95, 228, 0.8);
 }
 .action-link {
-  background: rgba(45, 52, 63, 0.8); /* A slightly different background */
+  background: rgba(45, 52, 63, 0.8);
 }
 .github-link:hover,
 .action-link:hover {
@@ -493,6 +587,7 @@ section {
   background: #2d343f;
 }
 
+/* Contact and Footer sections remain unchanged */
 .contact-form {
   display: flex;
   align-items: center;
@@ -563,7 +658,7 @@ form .send-btn:hover {
   color: var(--text-color);
 }
 
-/* ===== RESPONSIVE LAYOUT ADJUSTMENTS (Unchanged) ===== */
+/* Responsive styles remain unchanged */
 @media (max-width: 1700px) {
   header {
     padding: 20px 8%;
