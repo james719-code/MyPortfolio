@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://james719-code.github.io/MyPortfolio/sitemap.xml
